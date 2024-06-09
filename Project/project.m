@@ -5,7 +5,7 @@ format long;
 
 name = 'Brian Masse';
 id = 'A17991084';
-hw_num = 5;
+hw_num = "project";
 
 tic
 
@@ -22,7 +22,7 @@ plot3(Xboard,Yboard,Zboard,'-','color',[1 0.9 1]);
 box on; grid on; axis tight; axis equal;
 
 xlabel('x (m)'); ylabel('y (m)'); zlabel('z (m)');
-title('Basketball Court');
+title('Basketball Court & Test Shots');
 
 % view the court isographically
 view(3); 
@@ -31,7 +31,7 @@ set(gca,'FontSize',16);
 
 
 
-%% [TASK II & III] Plotting Test Throws
+%% TASK II: Plotting Test Throws
 % iterates throuhg predetermined throw data and calculate the trajectory
 % vectors, then plots them onto the court
 
@@ -100,15 +100,13 @@ legend( plots, labels, 'location', 'best' );
 
 %% TASK IV: Writing Data to Human Readable File
 % translate the structs of shot data into a .txt file
-name = "Brian Masse";
-PID = "A17991084";
 
 header = "shot number, travel time (s), landing speed (m/s), travel distance(m)";
 
 % provide the header information
 data = strings(10, 1);
 data(1) = name;
-data(2) = PID;
+data(2) = id;
 data(3) = header;
 
 for i = 1:shotCount(1)
@@ -171,6 +169,7 @@ ylabel( "Shooting Angle (degrees)" );
 title( "Best Angle Study (Shooting height x angle)" );
 
 legend( [sShots, fShots], "successful shots", "failed shots" );
+set(gca,'FontSize',10);
 
 
 %% Submission

@@ -27,14 +27,14 @@ function [T, X, Y, Z, U, V, W, status] = basketball( Xo, Yo, Zo, Umag0, theta, p
 
 
 %% Constants
+m = 0.625;
+r = 0.12;
+A = pi * r^2;
+
+p = 1.2;
+g = 9.81;
 Cd = 0.3;
 Cm = 0.13;
-r = 0.12;
-p = 1.2;
-m = 0.625;
-g = 9.81;
-
-A = pi * r^2;
 
 dt = 0.01;
 
@@ -94,12 +94,12 @@ while ~shotEnded
 end
 end
 
+function [shotEnded, status] = checkShotEnded( X, Y, Z, incomingStatus )
 %% checkShotEnded
 % given a coordinate in space, check if the ball is either in the net
-% or out of the court
-function [shotEnded, status] = checkShotEnded( X, Y, Z, incomingStatus )
+% or out of the court + whether a shot was successful
 
-%% Constant data
+% constant data
 r = 0.12;
 dRim = 0.46;
 
@@ -126,7 +126,6 @@ shotEnded = 0;
 % check if the ball is out of court
 if ( X > 0 || Y > 7 || Z < 0 )
     shotEnded = 1;
-
     return;
 end
 
@@ -143,7 +142,6 @@ end
 if (   abs( X - boardX ) < r ...
     && Y + r > boardMinY && Y - r < boardMaxY ...
     && Z + r > boardMinZ && Z - r < boardMaxZ)
-
     shotEnded = 1;
     return;
 end
