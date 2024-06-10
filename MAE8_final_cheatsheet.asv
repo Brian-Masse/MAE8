@@ -34,7 +34,6 @@ sum2 = sum( g(1:end-1) );
 % complete the integration
 intg = 0.5 * dx * ( sum1 + sum2 );
 
-
 %% Computing Derivatives
 dx = 0.1;
 
@@ -47,7 +46,6 @@ diffX = diff(x);
 diffF = diff(f);
 
 derivative = (diffF./ diffX);
-
 
 %% Reading / writing to files
 
@@ -62,10 +60,11 @@ file_identifier = fopen( 'filename', 'permssion' );
 % '%s %s %s' gives three coloumns of strings
 content = textscan( file_identifier, 'format', n );
 
-% prints a line to the specified file
-fprintf(file_identifier, 'format', vars);
+
 
 status = fclose(file_identifier);
+
+
 
 % file name of the saved data
 fileName = "annual_cycle.dat";
@@ -96,31 +95,10 @@ fig1 = figure(1);
 
 
 
-%% String Functions
-% char combines strings into a stirng matrix
-% blanks(n) : n-lengthed string
-% deblank   : remove trailing blanks
-% strtrim   : remove leading and trailing blanks
-
-% strncmp(str1, str2, n) : compare the first n chars of two strings
-% strcmpi   : compare two strings, ignoring case
-% upper & lower : transform the case
-
-% strfind(string substring) : fin dall occourances of a substring in a string
-% strrep    : replace substring with a new substring
-% strtok    : break a string into two strings by a deliminator
-
-% int2str, num2str
-% str2num
 
 
 
-%% Data Structures
-% cellplot  : to get a high level overview of a cell array
-% celldsip  : display the contents of a cell
 
-% (index)   : get the reference to a cell
-% {index}   : get the content of a cell
 
 
 
